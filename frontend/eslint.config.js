@@ -19,4 +19,13 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
+  {
+    // Componentes do shadcn/ui são copiados do registry e regenerados pelo
+    // `shadcn add`; eles exportam variantes (ex.: buttonVariants) junto do
+    // componente por design, o que conflita com a regra de fast refresh.
+    files: ['src/components/ui/**/*.{ts,tsx}'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
+    },
+  },
 ])
